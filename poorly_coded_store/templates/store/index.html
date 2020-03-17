@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Amadon</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-    <h1>Amadon Store!</h1>
-    <table>
-        <thead>
+<body class="container">
+    <div>
+    <h1 class="m-3">Amadon Store!</h1>
+    <table class="table table-hover shadow">
+        <thead class="thead-dark">
             <tr>
-                <th>Item</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Actions</th>
+                <th class="col">Item</th>
+                <th class="col text-center">Price</th>
+                <th class="col text-center">Quantity</th>
+                <th class="col text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,17 +25,18 @@
                 <form action="/checkout" method="post">
                     {% csrf_token %}
                     <td>{{product.description}}</td>
-                    <td><input type="hidden" name="price" value="{{product.price}}">{{product.price}}</td>
-                    <td><select name="quantity">
+                    <td><input type="hidden" name="product_id" value="{{product.id}}">${{product.price}}</td>
+                    <td class="text-center"><select name="quantity">
                         <option value="1">1</option>              
                         <option value="2">2</option>              
                         <option value="3">3</option>              
                     </select></td>
-                    <td><input type="submit" value="Buy!"></td>
+                    <td><input class="btn btn-success pl-4 pr-4" type="submit" value="Buy!"></td>
                 </form>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    </div>
 </body>
 </html>
